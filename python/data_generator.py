@@ -41,7 +41,7 @@ for i in range(n_sessions):                              # cycle to generate n_p
   payout = bet * rtp                                                                     # Payout: bet per Return-To-Player
 
   # Calcolating GGR & NGR
-  ggr = bet - win                                                                        # Gross Gaming Revenue
+  ggr = bet - payout                                                                        # Gross Gaming Revenue
   bonus = 0                                                                              # Bonus and if conditions in case of using it
   if promo == 'NEWUSER10':
     bonus = 10
@@ -49,7 +49,7 @@ for i in range(n_sessions):                              # cycle to generate n_p
     bonus = 20
   elif promo == 'POKER15':
     bonus = 15
-  ngr == max(ggr - bonus_val, 0)                                                         # Net Gaming Revenue
+  ngr = max(ggr - bonus, 0)                                                         # Net Gaming Revenue
 
   # Dictionary for data summary
   data.append({
@@ -70,5 +70,5 @@ for i in range(n_sessions):                              # cycle to generate n_p
 
 # Step 4: Creating and saving dataframe in .csv format
 df = pd.DataFrame(data)
-df.to_csv('data/player_sessions.csv', index=False)
+df.to_csv('player_sessions.csv', index=False)
 print("✅ 10000 simulated sessions generated.")
