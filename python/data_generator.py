@@ -9,17 +9,32 @@ np.random.seed(69)                                      # formula to generate ra
 
 # Step 2: Selecting parameters
 
-n_players = 1000                                        # n = 1000 unique players
-avg_session = 10                                        # Average sessions per player per week
-n_sessions = n_players * avg_session                    # Number of sessions in total
+n_players = 1200                                        # n = 1000 unique players
+n_sessions = 10000                                      # Number of sessions in total
+avg_session = n_sessions / n_players                    # Average sessions per player per week ~8.33
 start = datetime(2025, 9, 1)                            # Starting data: 1st September 2025
 end = datetime(2025, 9, 7)                              # Ending data: 7th September 2025
 
 # Step 3: adding distribution for sessions per player (Poisson)
-session_counts = np.random.poisson(lam = n_sessions, size = n_players)
-session_counts = np.clip(session_counts, 1, 30)                                  # the size of distribution counts from 1 to max 30 sessions per player
+session_counts = np.random.poisson(lam = avg_session, size = n_players)
+session_counts = np.clip(session_counts, 1, 30)         # the size of distribution counts from 1 to max 30 sessions per player
 
-# Step 4: Data Generator cycles: the cycles to generate gaming sessions data and to print it into a .csv file
+# Step 4: number of row datasets close to 10.000
+current_total = session_counts.sum()
+diff = n_sessions - current_total
+
+if diff > 0:
+  # Add sessions to random players
+  idx = np.random.choice(n_players, size = diff, replace = True)
+  session_counts[idx] += 1
+elif diff < 0:
+  # Remove sessions
+  idx = np.random.choice(n_players, size = -diff, replace = True)
+  session_counts[idx] -= 1
+
+
+
+# Step 5: Data Generator cycles: the cycles to generate gaming sessions data and to print it into a .csv file
 data = []                                               # it will contain the output of the cycle
 
 for player_idx in range(n_players):
@@ -84,4 +99,10 @@ for player_idx in range(n_players):
 # Step 4: Creating and saving a dataframe in .csv format
 df = pd.DataFrame(data)
 df.to_csv('player_sessions.csv', index=False)
-print("✅ 10000 simulated sessions generated.")
+print(f"✅ {len(df)} simulated sessions generated from {n_players} unique players ({len(df)/n_players:.1f} sessions/player avg).")
+session_counts_per_player = df['player_id'].value_counts()
+print("\n📊 Session count per player (sample):")
+print(session_counts_per_player.head(10))
+print(f"\nMean sessions per player: {session_counts_per_player.mean():.2f}")
+print(f"Std dev: {session_counts_per_player.std():.2f}")
+print(f"Min: {session_counts_per_player.min()}, Max: {session_counts_per_player.max()}")
