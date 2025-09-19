@@ -79,7 +79,7 @@ for player_idx in range(n_players):
     ngr = max(ggr - bonus, 0)                                                               # Net Gaming Revenue
     
     
-    # Step 5: Defining a dictionary for data collecting
+    # Step 6: Defining a dictionary for data collecting
     data.append({
             'player_id': player_id,
             'session_start': session_start,
@@ -96,7 +96,7 @@ for player_idx in range(n_players):
             'ngr': round(ngr, 2),
         })
 
-# Step 4: Creating and saving a dataframe in .csv format
+# Step 7: Creating and saving a dataframe in .csv format
 df = pd.DataFrame(data)
 df.to_csv('player_sessions.csv', index=False)
 print(f"✅ {len(df)} simulated sessions generated from {n_players} unique players ({len(df)/n_players:.1f} sessions/player avg).")
