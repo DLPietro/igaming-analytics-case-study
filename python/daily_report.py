@@ -7,14 +7,28 @@ df = pd.read_csv('player_sessions.csv')                                  # Readi
 df['session_start'] = pd.to_datetime(df['session_start'])                # selecting session start
 df['day'] = df['session_start'].dt.date                                  # analysing single day from the data file
 
-# Step 2: Calculating key factor, adding a new column to the dataset
-report = df.groupby('day').agg(                                          # adding column of this new data file
+# Step 2: Calculating daily key factors, aggregating them per player
+daily_report = df.groupby('day').agg(                                          # adding column of this new data file
     total_sessions=('player_id', 'count'),
+    unique_players=('player_id', 'nunique'),
     total_deposit=('deposit_amount', 'sum'),
-    avg_session_duration=('session_end', lambda x: (pd.to_datetime(x) - pd.to_datetime(df.loc[x.index, 'session_start'])).mean().total_seconds()/60),
-    churn_7d=('player_id', lambda x: len(set(df[df['session_start'] < (pd.Timestamp.today() - pd.Timedelta(days=7))]['player_id']) & set(x)))  # semplificato
-).reset_index()
+    total_bet=('bet_amount', 'sum'),
+    total_payout=('payout_amount', 'sum'),
+    total_ggr=('ggr', 'sum'),
+    total_ngr=('ngr', 'sum'),
+    avg_session_duration=('session_duration_min', 'mean'),
+    avg_rtp=('rtp', 'mean')
+).round(2).reset_index()
 
-# Step 3: Creating a daily report for the sessions
-report.to_csv('daily_kpi_report.csv', index=False)
+# Step 3: Adding KPIs
+daily_report['ggr_per_session'] = daily_report['total_ggr'] / daily_report['total_sessions']
+daily_report['ngr_per_player'] = daily_report['total_ngr'] / daily_report['unique_players']
+daily_report['conversion_rate'] = (daily_report['total_deposit'] > 0).sum() / len(df) * 100         # Percentage players who make a deposit
+
+# Step 4: Saving the report
+daily_report.to_csv('daily_kpi_report.csv', index=False)
 print("📊 Daily KPI report generated.")
+
+# Step 5: Showing summary
+print("\n=== DAILY SUMMARY ===")
+print(daily_report[['day', 'unique_players', 'total_sessions', 'total_ngr', 'avg_session_duration', 'avg_rtp']].to_string(index=False))
