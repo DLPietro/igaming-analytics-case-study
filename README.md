@@ -51,8 +51,12 @@ It’s a **proof of capability**.
 
 ---
 
-## 🧱 Project Structure
+# Project Structure
 
+
+### Project Structure
+
+```text
 igaming-analytics-case-study/
 ├── data/
 │   └── player_sessions.csv           # 10,000 sessions, 1,200 players
@@ -70,6 +74,7 @@ igaming-analytics-case-study/
 │   └── cohort_analysis.py            # Python-based cohort analysis (no SQL needed)
 └── docs/
     └── README.md                     # You're reading it.
+```
 
 ---
 
@@ -79,6 +84,7 @@ igaming-analytics-case-study/
 - [🧠 My Learning Roadmap](https://github.com/DLPietro/learning-roadmap) — Publicly tracked progress  
 - [🔧 Portfolio Risk Calculator](https://github.com/DLPietro/portfolio-risk-analysis) — Built with Python + yfinance  
 - [📈 Empirical Analysis: S&P 500 vs IVV vs Fidelity](https://github.com/DLPietro/thesis-backtesting-etf-spx) — Using R, GARCH, backtesting  
+
 
 ---
 
