@@ -66,14 +66,14 @@ From **1,200 unique players** and **10,000 gaming sessions** over 7 days (Sep 1�
 > → *Recommendation: Bundle slot play with a “Poker Free Spin” bonus to cross-sell and extend engagement.*
 
 > 💡 **“The top 5% of players (by NGR) generate 38% of total revenue.”**  
-> → *Recommendation: Launch a VIP program for top 100 players — personalized bonuses, faster withdrawals, dedicated support.*
+> → *Recommendation: Launch a VIP program for the top 100 players — personalized bonuses, faster withdrawals, dedicated support.*
 
 > 💡 **“Players who don’t deposit within 24h of signup have 92% churn by Day 7.”**  
 > → *Recommendation: Automate a “first deposit incentive” SMS/email within 6 hours of first login.*
 
 ### 📈 Cohort Retention Heatmap (Sample)
 ![Cohort Retention Heatmap](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/intra_week_cohort_heatmap.png)
-_*Players who deposited on Sep 1–3 showed 48% retention by Day 6. Those who deposited on Sep 4–7? Only 29%. Why? Weekend promo timing matters.*_
+_*Players who deposited on Sep 5–7 showed 63% retention by the end of the weekend. Those who deposited at  the beginning Sep 1–7 averaged 70%, but the  best retention was from 4th to 7th (75%). Why? Weekend promo timing matters.*_
 
 > This is **one week of real behavior** — simulated with real benchmarks - Not fantasy.  
 > Any commercial team could use this output **tomorrow** to run a campaign.
