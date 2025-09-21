@@ -68,8 +68,6 @@ From **1,200 unique players** and **10,000 gaming sessions** over 7 days (Sep 1�
 > 💡 **“The top 5% of players (by NGR) generate 38% of total revenue.”**  
 > → *Recommendation: Launch a VIP program for the top 100 players — personalized bonuses, faster withdrawals, dedicated support.*
 
-> 💡 **“Players who don’t deposit within 24h of signup have 92% churn by Day 7.”**  
-> → *Recommendation: Automate a “first deposit incentive” SMS/email within 6 hours of first login.*
 
 ### 📈 Cohort Retention Heatmap (Sample)
 ![Cohort Retention Heatmap](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/intra_week_cohort_heatmap.png)
