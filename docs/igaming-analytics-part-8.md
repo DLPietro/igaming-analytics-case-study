@@ -38,9 +38,19 @@ I built a churn predictor using **Logistic Regression** from the skit-learn libr
 
 The purpose of the model isn’t for “predicting the future”, but for **preventing the potential loss**.
 
-- TO BE CONTINUED
+It found 216 players at risk.  
+Profile:  
+- Played 2 times  
+- Last played 4 days ago  
+- Deposited €28  
+- Never used a bonus  
 
-# Code Snippet (TEMPORALY)
+**What do I do?** Send them a “CASINO20” bonus to check if they return.
+
+It’s **common sense — automated**.
+
+
+# Code Snippet Final
 
 ```python
 model = LogisticRegression(class_weight='balanced')
