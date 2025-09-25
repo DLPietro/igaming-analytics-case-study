@@ -30,3 +30,34 @@ player_features['is_high_risk'] = (
     (player_features['first_deposit'] < 50) &            # first deposit
     (player_features['days_active'] <= 1)                # active days
 ).astype(int)
+
+le = LabelEncoder()                                            # To encode categorical variables
+player_features['main_game_type_encoded'] = le.fit_transform(player_features['main_game_type'])
+
+# Step 4: defining dependent value and independent variables, and the elements for the logistic regression
+X = player_features[['total_sessions', 'first_deposit', 'avg_session_duration', 
+                     'has_bonus', 'main_game_type_encoded', 'days_active']]
+y = player_features['is_high_risk']                # The model splits high risk profiles and not
+
+# Step 5: logistic model and evaluation
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+model = LogisticRegression(class_weight='balanced', max_iter=1000)            # definition
+model.fit(X_train, y_train)                                                   # measuring the suitability
+y_pred = model.predict(X_test)                                                # evaluating the model with the dataset
+y_proba = model.predict_proba(X_test)[:, 1]
+
+print("🎯 CHURN PREDICTOR RESULTS")
+print(classification_report(y_test, y_pred))
+print(f"AUC Score: {roc_auc_score(y_test, y_proba):.3f}")
+
+# Step 6: saving model with joblib
+joblib.dump(model, 'churn_model.pkl')
+joblib.dump(list(X.columns), 'feature_names.pkl')
+print("\n✅ Model saved to churn_model.pkl")
+print("✅ Feature names saved to feature_names.pkl")
+
+# EXAMPLE FOR A NEW PLAYER
+sample = [[2, 25, 15, False, 0, 1]]  # 2 sessioni, deposito 25€, durata 15min, no bonus, slot, 1 giorno attivo
+pred = model.predict(sample)[0]
+prob = model.predict_proba(sample)[0][1]
+print(f"\n🔮 Sample Prediction: Churn Risk = {'HIGH' if pred == 1 else 'LOW'} (Probability: {prob:.2%})")
