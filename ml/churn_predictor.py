@@ -23,25 +23,30 @@ player_features = df.groupby('player_id').agg(
     days_active=('session_start', lambda x: (x.max() - x.min()).days)  # THe most active games
 ).reset_index()
 
-# Step 3: "churn" logic = 1 if the player didn't play 7 days since his first deposit
-# Condition: whoever has less than 3 session and a first deposit < 50, it's risky
-player_features['is_high_risk'] = (
-    (player_features['total_sessions'] < 3) &            # total sessions
-    (player_features['first_deposit'] < 50) &            # first deposit
-    (player_features['days_active'] <= 1)                # active days
-).astype(int)
-
+# Step 3: Encoding categorical variables
 le = LabelEncoder()                                            # To encode categorical variables
 player_features['main_game_type_encoded'] = le.fit_transform(player_features['main_game_type'])
 
+# Step 4: Churn probability definition (based on the observations of the data)
+player_features['churn_prob'] = (
+    0.1 +  # base
+    (player_features['total_sessions'] < 2) * 0.3 +
+    (player_features['first_deposit'] < 20) * 0.25 +
+    (player_features['days_active'] == 1) * 0.2 +
+    (player_features['avg_session_duration'] < 10) * 0.15
+)
+
+player_features['is_churned'] = (np.random.random(len(player_features)) < player_features['churn_prob']).astype(int)       # Defined random limit to generate the target
+player_features = player_features.drop(columns=['churn_prob'])                            # removing probability column
+
 # Step 4: defining dependent value and independent variables, and the elements for the logistic regression
-X = player_features[['total_sessions', 'first_deposit', 'avg_session_duration', 
+X = player_features[['total_sessions', 'first_deposit', 'avg_session_duration',
                      'has_bonus', 'main_game_type_encoded', 'days_active']]
-y = player_features['is_high_risk']                # The model splits high risk profiles and not
+y = player_features['is_churned']               # The model splits high risk profiles and not
 
 # Step 5: logistic model and evaluation
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-model = LogisticRegression(class_weight='balanced', max_iter=1000)            # definition
+model = LogisticRegression(class_weight='balanced', max_iter=1000)            # Model Training
 model.fit(X_train, y_train)                                                   # measuring the suitability
 y_pred = model.predict(X_test)                                                # evaluating the model with the dataset
 y_proba = model.predict_proba(X_test)[:, 1]
@@ -57,7 +62,7 @@ print("\n✅ Model saved to churn_model.pkl")
 print("✅ Feature names saved to feature_names.pkl")
 
 # EXAMPLE FOR A NEW PLAYER
-sample = [[2, 25, 15, False, 0, 1]]  # 2 sessioni, deposito 25€, durata 15min, no bonus, slot, 1 giorno attivo
+sample = [[2, 25, 15, False, 0, 1]]  # 2 sessions, 25€ deposit, 15min duration, no bonus, slot, 1 active day
 pred = model.predict(sample)[0]
 prob = model.predict_proba(sample)[0][1]
 print(f"\n🔮 Sample Prediction: Churn Risk = {'HIGH' if pred == 1 else 'LOW'} (Probability: {prob:.2%})")
