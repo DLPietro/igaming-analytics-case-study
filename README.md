@@ -77,14 +77,62 @@ _*Players who deposited on Sep 5–7 showed 63% retention by the end of the week
 > Any commercial team could use this output **tomorrow** to run a campaign.
 ---
 
+### 🤖 Churn Predictor Model — Realistic, Not Perfect
+
+I built a **logistic regression model** to predict which players are at high risk of churn within 7 days. Here are the results:
+
+## Model Performance (Test Set: 240 players)
+- **AUC Score**: 0.607
+- **Precision (Churn = 1)**: 34%  
+- **Recall (Churn = 1)**: 85%  
+
+> 💡 **What this means?**
+> The model isn’t great at saying *“this player will definitely churn”* (low precision),  
+> but it’s **very good at catching most players who actually do churn** (high recall).  
+>  
+> In business terms:  
+> → We might send a bonus to **some players who wouldn’t have left** (false positives),  
+> → But we **won’t miss the ones who are really about to go** (a few false negatives).  
+
+## Top 3 Predictors of Churn
+1. **Days since last session** (>3 days = high risk)  
+2. **Total sessions < 3**  
+3. **No bonus claimed**  
+
+#### Actionable Output
+- The model outputs a **ranked list of 100 high-risk players**  
+- File: [`top_churn_risk_players.csv`](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/top_churn_risk_players.csv)  
+- Use it to trigger **automated re-engagement campaigns** (_e.g., “We miss you! Here’s CASINO20”_)
+
+---
+
 ## 📈 All is beautiful, but why this project?
 
 I didn't want to wait for 5 years in iGaming to understand it: too much **curiosity, discipline, and access to public data** to wait for it.
 
 And I wanted to **build the solution before being asked**.
 
-This isn’t a project.  
-It’s a **proof of capability**.
+This isn’t a project, but a **proof of capability**.
+
+---
+
+### 📊 Tableau Dashboard — Live, Interactive, Ready to Use
+
+I built a **fully interactive dashboard** in Tableau Public that visualizes all key KPIs from the simulation:
+
+- Daily NGR trend  
+- Intra-week cohort retention heatmap  
+- GGR by game type (Slot = 71% of revenue)  
+- Bonus conversion impact  
+- Churn risk segmentation  
+
+🔗 **[View the Live Dashboard →](https://public.tableau.com/app/profile/dlpietro/viz/CasinoKPIDashboard_17471928461730/CasinoKPI)**
+
+![Tableau Preview](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/casino_dashboard_screenshot.png)  
+*Screenshot: The dashboard is filterable by date, game type, and bonus code — ready for a commercial team to use.*
+
+> No mockups. No “coming soon”.  
+> This is **live, public, and functional today**.
 
 ---
 
@@ -101,13 +149,18 @@ igaming-analytics-case-study/
 ├── reports/
 │   ├── daily_kpi_report.csv          # Daily aggregation of KPIs
 │   ├── cohort_retention_matrix.csv   # Intra-week retention matrix
-│   └── intra_week_cohort_heatmap.png # Intra-week retention plot
+│   ├── intra_week_cohort_heatmap.png # Intra-week retention plot
+│   └── top_churn_risk_players.csv    # Top 100 players at risk of churn
 ├── python/
+│   ├── churn_predictor.py            # Machine-Learning logistic regression model
+│   ├── churn_model.pkl               # Model saved with the Joblib package
+│   └── feature_names.pkl             # Dataset columns saved with the Joblib package
+├── ml/
 │   ├── data_generator.py             # Generates realistic synthetic data
 │   ├── daily_report.py               # Auto-generates daily summary
 │   └── cohort_analysis.py            # Python-based cohort analysis (no SQL needed)
-└── docs/
-    └── README.md                     # You're reading it.
+└── README.md                         # You're reading it.
+
 ```
 
 ---
@@ -126,4 +179,4 @@ igaming-analytics-case-study/
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-DLPietro-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DLPietro)    [![Commit Style](https://img.shields.io/badge/Commit_Style-DLPietro-9B59B6?style=for-the-badge&logo=git&logoColor=white)](https://github.com/DLPietro/learning-roadmap/blob/main/CONTRIBUTING.md)    [![License](https://img.shields.io/badge/License-MIT-007EC7?style=for-the-badge&logo=mit-license&logoColor=white)](https://github.com/DLPietro/learning-roadmap/blob/main/LICENSE)
 
-> © 2025 Pietro Di Leo — From Operations to Data. One Commit at a Time.
+> _© 2025 Pietro Di Leo — From Operations to Data. One Commit at a Time._
