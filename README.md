@@ -126,9 +126,9 @@ I built a **fully interactive dashboard** in Tableau Public that visualizes all 
 - Bonus conversion impact  
 - Churn risk segmentation  
 
-🔗 **[View the Live Dashboard →](https://public.tableau.com/app/profile/dlpietro/viz/CasinoKPIDashboard_17471928461730/CasinoKPI)**
+🔗 **[View the Live Dashboard →](https://public.tableau.com/views/CasinoKPIDashboard/CasinoKPIDashboardSimulatediGamingAnalytics?:language=it-IT&:sid=&:redirect=auth&showOnboarding=true&:display_count=n&:origin=viz_share_link)**
 
-![Tableau Preview](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/casino_dashboard_screenshot.png)  
+![Tableau Preview](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/dashboard/casino_dashboard_screenshot.png)  
 *Screenshot: The dashboard is filterable by date, game type, and bonus code — ready for a commercial team to use.*
 
 > No mockups. No “coming soon”.  
@@ -159,6 +159,9 @@ igaming-analytics-case-study/
 │   ├── data_generator.py             # Generates realistic synthetic data
 │   ├── daily_report.py               # Auto-generates daily summary
 │   └── cohort_analysis.py            # Python-based cohort analysis (no SQL needed)
+├──dashboard/
+│   ├── Casino_KPI_Dashboard.twbx     # Tableau Dashboard
+│   └── casino_dashboard_screenshot.png  # Dashboard Screenshot
 └── README.md                         # You're reading it.
 
 ```
