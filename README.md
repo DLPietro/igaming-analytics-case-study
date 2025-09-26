@@ -121,8 +121,7 @@ This isn’t a project, but a **proof of capability**.
 I built a **fully interactive dashboard** in Tableau Public that visualizes all key KPIs from the simulation:
 
 - Daily NGR trend  
-- Intra-week cohort retention heatmap  
-- GGR by game type (Slot = 71% of revenue)  
+- GGR by game type 
 - Bonus conversion impact  
 - Churn risk segmentation  
 
