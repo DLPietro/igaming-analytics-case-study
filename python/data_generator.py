@@ -14,7 +14,7 @@ n_weeks = 4                                             # Number of weeks
 n_sessions = 10000 *  n_weeks                           # Number of sessions in total
 avg_session = n_sessions / n_players                    # Average sessions per player ~33.33 (~8.33 weekly)
 start = datetime(2025, 9, 1)                            # Starting data: 1st September 2025
-end = datetime(2025, 9, 29)                             # Ending data: 29th September 2025
+end = datetime(2025, 9, 28)                             # Ending data: 29th September 2025
 
 
 # Step 3: adding distribution for sessions per player (Poisson), and seasonality boost for a realistic players behaviour
