@@ -1,6 +1,6 @@
 ### Data Generator Python
 ### Goals of the script: Generate random data for the gaming sessions
-### last modify: extend the dataset for a month (4 weeks) for data accuracy
+### last modify: extend the dataset for a period of month (4 weeks) for data accuracy
 
 # Step 1: importing libraries and selecting, seed for the random generation
 import pandas as pd, numpy as np                        # pandas library for dataframes, numpy for mathematical formulas
@@ -20,6 +20,7 @@ end = datetime(2025, 9, 28)                             # Ending data: 29th Sept
 # Step 3: adding distribution for sessions per player (Poisson), and seasonality boost for a realistic players behaviour
 weekend_boost = np.random.choice([1.0, 1.3, 1.3, 1.1, 1.1, 1.4, 1.4], size=n_players, p=[0.1, 0.2, 0.2, 0.15, 0.15, 0.1, 0.1])
 session_counts = np.random.poisson(lam = avg_session, size = n_players)
+#session_counts = np.clip(session_counts, 1, 30)         # the size of distribution counts from 1 to max 30 sessions per player
 
 # Step 4: number of row datasets close to 10.000
 current_total = session_counts.sum()
@@ -42,6 +43,7 @@ data = []                                               # it will contain the ou
 for player_idx in range(n_players):
   player_id = f'P{player_idx:04d}'                       # identification for each player: P0001, P0002,...
   player_sessions = session_counts[player_idx]           # number of session per player
+  first_deposit_made = False                             # first deposit player
 
   # Generating random dates and hours between start and end dates
   for i in range(player_sessions):
@@ -51,34 +53,45 @@ for player_idx in range(n_players):
     session_start = start + timedelta(days=np.random.randint(0, delta_days + 1), hours=np.random.randint(0, 24), minutes=np.random.randint(0, 60))
 
     duration = np.random.exponential(30)                      # Exponential distribution used, considering 30 min as average duration for each session (giocoresponsabile.info)
-    
+
     # Enhancing the duration and deposit probability in the weekend
-    day_of_week = session_start.weekday()  # 0 = Mon, 6 = Sun
-    if day_of_week >= 5:  # Saturday or Sunday
-        duration *= np.random.uniform(1.1, 1.6)  # Longer sessions
-        deposit_prob = min(deposit_prob * 1.3, 1.0)  # probability higher for the deposits
+    duration = np.random.exponential(30)
+    day_of_week = session_start.weekday()
+    weekend_boost = 1.0
+    if day_of_week >= 5:
+      weekend_boost = np.random.uniform(1.1, 1.6)
+      duration *= weekend_boost
 
     session_end = session_start + timedelta(minutes=duration) # Ending session: adding minutes to the start session
 
     # Selecting game type and devices used to play
     device = np.random.choice(['Mobile', 'Computer', 'Tablet'], p = [0.5, 0.4, 0.1])   # devices selected: 50% mobile (italianotizie24.it, ), 40% pc, and the rest tablet
     game_type = np.random.choice(['Slot', 'Blackjack', 'Poker', 'Roulette'], p = [0.4, 0.1, 0.2, 0.3]) # Game type selected: between the main games, such as slot machines, roulette, etc
-    promo = np.random.choice(['NEWUSER10', 'CASINO20', 'POKER15', None], p=[0.3, 0.1, 0.1, 0.5])      # Probability for a player to use a promo code (None = no promo)
 
-    # Simula campagne promozionali: NEWUSER10 è più comune all'inizio della settimana
-    promo_weights = np.array([0.3, 0.1, 0.1, 0.5])  # base
-    if day_of_week == 0:                                        # Monday with more NEWUSER10
-      promo_weights[0] = 0.4
-      promo_weights[3] = 0.4
-    elif day_of_week >= 5:                                      # Weekend with more CASINO20
-      promo_weights[1] = 0.2
-      promo_weights[3] = 0.4
-    promo = np.random.choice(['NEWUSER10', 'CASINO20', 'POKER15', None], p=promo_weights)
+    # Promo campaign simulation
+    base_promo_weights = np.array([0.3, 0.1, 0.1, 0.5])
+    if day_of_week == 0:    # Monday
+      base_promo_weights = np.array([0.4, 0.1, 0.1, 0.4])
+    elif day_of_week >= 5:
+      # Weekend
+      base_promo_weights = np.array([0.3, 0.2, 0.1, 0.4])
+    promo = np.random.choice(['NEWUSER10', 'CASINO20', 'POKER15', None], p=base_promo_weights)
+
+    # Deposit probability if promo exists
+    deposit_prob = 0.8 if promo else 0.4
+    # it enhances for the weekend
+    if day_of_week >= 5:
+      deposit_prob = min(deposit_prob * 1.3, 1.0)
+
+    # if not done yet, Deposit probability higher
+    if not first_deposit_made:
+      deposit_prob = max(deposit_prob, 0.7)
     
-    # Select deposit, bet, probability to win, and eventually promo code
-    deposit_prob = 0.8 if promo else 0.4                                                   # Probability to insert a deposit or not
-    deposit = np.random.exponential(100) if np.random.rand() < deposit_prob else 0         # Quantity of deposit given probability
-
+    deposit = np.random.exponential(100) if np.random.rand() < deposit_prob else 0
+    
+    if deposit > 0:
+      first_deposit_made = True
+    
     # Bet, payout (the win of the player), Return-To-Player per game type
     bet = np.random.uniform(10, 500)                                                       # Probability distribution (uniform) to bet an amount between 10 and 500 euros
     rtp_map = {'Slot': 0.92, 'Blackjack': 0.98, 'Poker': 0.97, 'Roulette': 0.95}           # Payout per game type
@@ -113,7 +126,7 @@ for player_idx in range(n_players):
             'payout_amount': round(payout, 2),
             'rtp': round(rtp, 3),
             'ggr': round(ggr, 2),
-            'ngr': round(ngr, 2),
+            'ngr': round(ngr, 2)
         })
 
 # Step 4: Creating and saving a dataframe in .csv format
