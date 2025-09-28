@@ -70,8 +70,8 @@ From **1,200 unique players** and **10,000 gaming sessions** over 7 days (Sep 1�
 
 
 ### 📈 Cohort Retention Heatmap (Sample)
-![Cohort Retention Heatmap](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/intra_week_cohort_heatmap.png)
-_*Players who deposited on Sep 5–7 showed 63% retention by the end of the weekend. Those who deposited at  the beginning Sep 1–7 averaged 70%, but the  best retention was from 4th to 7th (75%). Why? Weekend promo timing matters.*_
+![Cohort Retention Heatmap](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/cohort_retention_heatmap.png)
+_*Updated for the whole month.*_
 
 > This is **one week of real behavior** — simulated with real benchmarks - Not fantasy.  
 > Any commercial team could use this output **tomorrow** to run a campaign.
