@@ -2,9 +2,9 @@
 
 > _**“I didn’t wait for an iGaming job, so I've been building my own case study.”**_
 
-The goal of this project is to simulate the exact analytics workflow used by an **iGaming commercial team** — but built from scratch, using only **public industry benchmarks**.
+This project aims to replicate the entire analytics workflow used by the **iGaming commercial team** — but built from scratch, using only **publicly available industry benchmarks** for a realistic data simulation.
 
-I built it for a simple reason:
+The motivation is simple:
 
 > _“If I want to join your team, I need to speak your language!!!”_
 
@@ -29,35 +29,31 @@ All parameters are grounded in publicly available reports from authoritative sou
 
 ---
 
-## 🛠 Methodology & Tools
 
-- **Python**: Synthesizes realistic player session data, performs cohort analysis, KPI extraction, and churn modeling
-- **SQL**: Enables flexible cohort and retention analyses 
-- **Poisson Distribution**: Probability model to create realistic session counts per player
-- **Retention Modeling**: Implements progressive decay in player activity to simulate realistic churn patterns
-- **Tableau Public**: Interactive and dynamic dashboards for commercial insights 
+### 📊 Data & Dataset Overview
 
----
+The underlying dataset was generated to realistically mimic player behavior in the iGaming sector _from 1st September to 28th September 2025_, using:
 
-### 📊 RESULTS — WHAT THE DATA REVEALED
+> **40,000 simulated gaming sessions**
+> **1,200 unique players**
+> One-month period (_4 weeks_)
+> Session and player activity modeled with a **Poisson distribution** to reflect real-world variability.
 
-Dataset covers **1,200 unique players** generating approximately **40,000 gaming sessions** spread over a 4-week period (Sep 1–28, 2025), with retention dynamically modeled. Key aggregate statistics directly reflect industry realities:
 
-| Metric | Result | Source & Validation |
+
+| Metric | Result | Benchmark/Source |
 |--------|--------|---------------------|
-| **Avg Session Duration** | 30.2 min | Consistent with Giocoresponsabile’s 28–30 min slot benchmark, validating session design |
-| **RTP (Overall)** | 95.7% | Firmly within MGA/ADM regulatory ranges — no artificial inflation |
-| **Slot Market Share** | 41% | Lower than the Italian market's 65% to reflect real-world diversity — designed for nuanced analysis |
-| **Bonus Conversion Rate** | 33.8% | Slightly higher than benchmark, showing effective simulated promotional campaigns |
-| **GGR (Weekly)** | €187,400 | Calculated from bets and RTP, consistent with active user and session volumes |
-| **NGR (Weekly)** | €152,100 | Subtracting promotional bonuses, aligns with industry margin expectations |
-| **Daily Active Users (DAU)** | Avg 321/day | Weekend peaks observed, mirroring real player behavior |
-| **First Deposit → First Session** | 87% within 1 hour | Strong onboarding funnel, though 13% risk churn without depositing |
-| **Mobile Usage** | 50% | Matches industry-wide mobile penetration |
-| **Avg NGR per Player (Weekly)** | €12.70 | Aligns with H2GC benchmark (€12.40), confirming dataset validity |
+| **Total Sessions** | 40,000 | Dataset generation and range period for the retention analysis and forecast |
+| **Unique Players** | 1200 | Dataset generation |
+| **Avg Sessions per Player** | 33.3 (5.8 as _Std_) | Poisson distribution realistic variability |
+| **Avg Session Duration** | 30.6 min | Matches Giocoresponsabile.info report |
+| **RTP (Overall)** | 94.5% | Within regulatory ranges from MGA Malta and ADM Italy |
+| **Daily Active Users (DAU)** | Ranges 250–1,150 | Realistic user activity fluctuations |
+| **Average NGR per Player Weekly** | €12.7 | Industry benchmark aligns with H2 Gambling Capital |
+| **Weekly Retention Rates** | Week 0-3: 100%, 76.8%, 39.7%, 15.1% | Realistic retention decay observed in igaming analytics literature |
 
 
-### 🔍 Key Findings — Actionable for a Commercial Team
+### 🔍 Analytic Insights — Commercial Team Actionables
 
 > 💡 **“Players who claim a bonus AND play 3+ sessions in the first week have 78% retention at Day 7.”**  
 > → *Recommendation: Deploy targeted re-engagement bonuses around Day 4 to boost retention rates, exemplified by ‘CASINO20’. Increase observed retention by 10%.*
@@ -109,6 +105,13 @@ The dataset simulates real user activity over 4 weeks, incorporating progressive
 - Please find the excel file below:
 - [![Top 100 High-Risk Players](https://img.shields.io/badge/100_High-Risk_Players-28A745?style=for-the-badge&logo=python&logoColor=white)](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/top_churn_risk_players.csv)
 
+
+## 🛠 Methodology & Tools
+
+- Data simulation in **Python** modeling session activity, deposits, _NGR, GGR, RTP_, and promo responsiveness
+- **SQL** and Python-driven cohort analyses for retention metrics
+- **Tableau Public** for rich, interactive visualization and user-friendly stakeholder engagement
+
 ---
 
 ## 📈 All is beautiful, but why this project?
@@ -132,9 +135,6 @@ I built a **fully interactive dashboard** in Tableau Public that visualizes all 
 
 ![Tableau Preview](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/dashboard/casino_dashboard_screenshot.png)  
 *Screenshot: The dashboard is filterable by date, game type, and bonus code — ready for a commercial team to use.*
-
-> No mockups. No “coming soon”.  
-> This is **live, public, and functional today**.
 
 ---
 
