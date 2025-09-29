@@ -84,6 +84,7 @@ The dataset simulates real user activity over 4 weeks, incorporating progressive
 ## Model Performance (Test Set: 240 players)
 
 | Metric | Value |
+|--------|-------|
 | AUC Score | 0.638|
 | Accuracy | 51% |
 | Precision (Churn=1) | 23% |
@@ -105,7 +106,8 @@ The dataset simulates real user activity over 4 weeks, incorporating progressive
 
 #### Actionable Output
 - The model outputs a prioritized list of **100 players at highest churn risk**, available for targeted re-engagement campaigns.
-- Please find the excel file here: [`top_churn_risk_players.csv`](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/top_churn_risk_players.csv)  
+- Please find the excel file below:
+- [![Top 100 High-Risk Players](https://img.shields.io/badge/100_High-Risk_Players-28A745?style=for-the-badge&logo=python&logoColor=white)](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/top_churn_risk_players.csv)
 
 ---
 
