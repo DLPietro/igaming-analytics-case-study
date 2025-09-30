@@ -1,4 +1,4 @@
-# 🎰 KPI Analytics Dashboard — Simulated iGaming Analytics Project
+# 🎲 KPI Analytics Dashboard — Simulated iGaming Analytics Project
 
 > _**“I didn’t wait for an iGaming job, so I've been building my own case study.”**_
 
