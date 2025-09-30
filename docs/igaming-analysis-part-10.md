@@ -48,13 +48,18 @@ It happens after the bonus runs out.**
 
 # Code Snippet Final
 
-```python
+<pre>
+``` python
 # New parameters
 start = datetime(2025, 9, 1)
 end = datetime(2025, 9, 28)  # 4 weeks
 n_players = 1200
 n_sessions = 40000
 avg_session = n_sessions / n_players  # 33.3 — realistic for active players
-# Next Step  
-👉 I have the data, the model and the dashboard.
-👉 Next: **Understanding the strenghts and the weaknesses of my work**
+
+´´´
+</pre>
+Next Step  
+> I have the data, the model, and the dashboard.
+> 
+> Next: **Understanding the strengths and the weaknesses of my work.**
