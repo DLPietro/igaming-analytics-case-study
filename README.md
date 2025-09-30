@@ -101,9 +101,8 @@ The dataset simulates real user activity over 4 weeks, incorporating progressive
 3. **No bonus claimed**  
 
 #### Actionable Output
-- The model outputs a prioritized list of **100 players at highest churn risk**, available for targeted re-engagement campaigns.
-- Please find the excel file below:
-- [![Top 100 High-Risk Players](https://img.shields.io/badge/100_High-Risk_Players-28A745?style=for-the-badge&logo=python&logoColor=white)](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/top_churn_risk_players.csv)
+> The model outputs a prioritized list of **100 players at highest churn risk**, available for targeted re-engagement campaigns. Find the excel file below:
+>> [![Top 100 High-Risk Players](https://img.shields.io/badge/100_High-Risk_Players-28A745?style=for-the-badge&logo=python&logoColor=white)](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/reports/top_churn_risk_players.csv)
 
 
 ## 🛠 Methodology & Tools
