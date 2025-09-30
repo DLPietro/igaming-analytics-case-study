@@ -29,10 +29,23 @@ All parameters are grounded in publicly available reports from authoritative sou
 
 ---
 
+### 📊 Tableau Dashboard — Live, Interactive, Ready to Use
+
+I built a **fully interactive dashboard** in Tableau Public that visualizes all key KPIs from the simulation:
+
+- Daily NGR trend  
+- GGR by game type 
+- Bonus conversion impact  
+- Churn risk segmentation  
+
+🔗 **[View the Live Dashboard →](https://public.tableau.com/views/CasinoKPIDashboard/CasinoKPIDashboardSimulatediGamingAnalytics?:language=it-IT&:sid=&:redirect=auth&showOnboarding=true&:display_count=n&:origin=viz_share_link)**
+
+![Tableau Preview](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/dashboard/casino_dashboard_screenshot.png)  
+*Screenshot: The dashboard is filterable by date, game type, and bonus code — ready for a commercial team to use.*
 
 ### 📊 Data & Dataset Overview
 
-The underlying dataset was generated to realistically mimic player behavior in the iGaming sector _from 1st September to 28th September 2025_, using:
+The dashboard is built using an underlying dataset that was generated to realistically mimic player behavior in the iGaming sector _from 1st September to 28th September 2025_, using:
 
 > **40,000 simulated gaming sessions**
 > **1,200 unique players**
@@ -118,22 +131,6 @@ The dataset simulates real user activity over 4 weeks, incorporating progressive
 I didn't want to wait for 5 years in iGaming to understand it: too much **curiosity, discipline, and access to public data** to wait for it.
 
 This drove me to build this repository as a **proof of capability**, not just a case study.
-
----
-
-### 📊 Tableau Dashboard — Live, Interactive, Ready to Use
-
-I built a **fully interactive dashboard** in Tableau Public that visualizes all key KPIs from the simulation:
-
-- Daily NGR trend  
-- GGR by game type 
-- Bonus conversion impact  
-- Churn risk segmentation  
-
-🔗 **[View the Live Dashboard →](https://public.tableau.com/views/CasinoKPIDashboard/CasinoKPIDashboardSimulatediGamingAnalytics?:language=it-IT&:sid=&:redirect=auth&showOnboarding=true&:display_count=n&:origin=viz_share_link)**
-
-![Tableau Preview](https://github.com/DLPietro/igaming-analytics-case-study/blob/main/dashboard/casino_dashboard_screenshot.png)  
-*Screenshot: The dashboard is filterable by date, game type, and bonus code — ready for a commercial team to use.*
 
 ---
 
