@@ -43,5 +43,5 @@ I didn’t build this for GitHub, but for **the businessman who decides the budg
 🔗 [View Live Dashboard on Tableau Public](https://public.tableau.com/views/CasinoKPIDashboard/CasinoKPIDashboardSimulatediGamingAnalytics?:language=it-IT&:sid=&:redirect=auth&showOnboarding=true&:display_count=n&:origin=viz_share_link)
 
 # Next Step  
-👉 I have the data, the model and the dashboard.
-👉 Next: **Understanding the strenghts and the weaknesses of my work**
+> I have the data, the model, and the dashboard.
+> Next: **Understanding the strengths and the weaknesses of my work, and improving them.**
