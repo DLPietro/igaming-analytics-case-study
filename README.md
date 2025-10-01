@@ -157,9 +157,11 @@ igaming-analytics-case-study/
 │   ├── data_generator.py             # Generates realistic synthetic data
 │   ├── daily_report.py               # Auto-generates daily summary
 │   └── cohort_analysis.py            # Python-based cohort analysis (no SQL needed)
-├──dashboard/
+├── dashboard/
 │   ├── Casino_KPI_Dashboard.twbx     # Tableau Dashboard
 │   └── casino_dashboard_screenshot.png  # Dashboard Screenshot
+├── notebook/
+│   └── igaming.ipynb                 # Google Colab Script
 └── README.md                         # You're reading it.
 
 ```
