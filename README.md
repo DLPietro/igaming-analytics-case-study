@@ -182,4 +182,4 @@ igaming-analytics-case-study/
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-DLPietro-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DLPietro)    [![Commit Style](https://img.shields.io/badge/Commit_Style-DLPietro-9B59B6?style=for-the-badge&logo=git&logoColor=white)](https://github.com/DLPietro/learning-roadmap/blob/main/CONTRIBUTING.md)    [![License](https://img.shields.io/badge/License-MIT-007EC7?style=for-the-badge&logo=mit-license&logoColor=white)](https://github.com/DLPietro/learning-roadmap/blob/main/LICENSE)
 
-> _© 2025 Pietro Di Leo — From Operations to Data. One Commit at a Time._
+> _© 2025 Pietro Di Leo — One Commit at a Time._
