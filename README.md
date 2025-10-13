@@ -172,7 +172,7 @@ igaming-analytics-case-study/
 
 - [📊 My Data Journey Blog](https://dlpietro.github.io) — Weekly updates on my upskilling  
 - [🧠 My Learning Roadmap](https://github.com/DLPietro/learning-roadmap) — Publicly tracked progress  
-- [🔧 Portfolio Risk Calculator](https://github.com/DLPietro/portfolio-risk-analysis) — Built with Python + yfinance  
+- [🔧 Portfolio Risk Report](https://github.com/DLPietro/portfolio-risk-report) — Built with Python + yfinance  
 - [📈 Empirical Analysis: S&P 500 vs IVV vs Fidelity](https://github.com/DLPietro/thesis-backtesting-etf-spx) — Using R, GARCH, backtesting  
 
 
